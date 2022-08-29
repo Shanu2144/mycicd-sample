@@ -1,13 +1,4 @@
-version: 0.0
-os: linux	
-files:	
-  - source: /index.html	  
-    destination: /var/www/html/	    
-hooks:	
-  BeforeInstall:	 
-    - location: scripts/install_dependencies	   
-      timeout: 300	     
-      runas: root	     
-    - location: scripts/start_server	    
-      timeout: 300	     
-      runas: root
+#!/bin/bash
+sudo yum -y update
+sudo yum -y install httpd
+sudo rm -rf /var/www/html/index.html
