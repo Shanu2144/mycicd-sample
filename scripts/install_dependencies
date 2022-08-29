@@ -1,4 +1,13 @@
-#!/bin/bash
-sudo apt-get update
-sudo apt-get -y install apache2
-sudo rm /var/www/html/index.html
+version: 0.0
+os: linux	
+files:	
+  - source: /index.html	  
+    destination: /var/www/html/	    
+hooks:	
+  BeforeInstall:	 
+    - location: scripts/install_dependencies	   
+      timeout: 300	     
+      runas: root	     
+    - location: scripts/start_server	    
+      timeout: 300	     
+      runas: root
